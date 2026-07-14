@@ -1,16 +1,11 @@
+import React from 'react';
+import Header from './components/header';
+import Button from './components/buttons/button';
+
 function TodoList() {
   return (
     <>
-      <div className="background-container" aria-hidden="true">
-        <div className="stars"></div>
-        <div className="twinkling"></div>
-        <div className="clouds"></div>
-      </div>
-
-      <nav className="navbar">
-        <div className="nav-logo">Todo List</div>
-        <button id="themeButton" type="button">🌙 Dark Mode</button>
-      </nav>
+      <Header title="Hilal's Todo List" />
 
       <main className="container">
         <h1>Daily Tasks</h1>
@@ -25,12 +20,12 @@ function TodoList() {
             <option value="3">🔴 High</option>
           </select>
 
-          <button id="addButton" type="button">Add</button>
+          <Button id="addButton" type="button" label="Add" />
         </div>
 
         <ul id="todoList"></ul>
 
-        <button id="clearButton" type="button">Clear All</button>
+        <Button id="clearButton" type="button" label="Clear All" />
       </main>
     </>
   );
