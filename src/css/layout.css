@@ -1,0 +1,81 @@
+/* ==========================================================================
+   ARKA PLAN KATMANLARI, NAVBAR VE SAYFA DÜZENİ
+   ========================================================================== */
+body {
+    font-family: var(--font-main);
+    background: var(--sayfa-bg);
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    min-height: 100vh;       
+    box-sizing: border-box;
+    padding: 20px;          
+    padding-top: 80px !important; 
+}
+
+/* Arka Plan Konteyneri */
+.background-container {
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    z-index: -1;
+
+    display:none; /* Başlangıçta gizli */
+}
+
+body.dark .background-container {
+    display:block; /* Karanlık modda görünür */
+}
+
+.stars {
+    background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    display: block;
+    z-index: 0;
+}
+
+.twinkling {
+    width: 10000px; height: 100%;
+    background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
+    background-size: 1000px 1000px;
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    z-index: 1;
+    animation: move-background 70s linear infinite;
+}
+
+.clouds {
+    width: 10000px; height: 100%;
+    background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png") repeat;
+    background-size: 1000px 1000px;
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    z-index: 2;
+    animation: move-background 150s linear infinite;
+}
+
+
+/* Üst Menü (Navbar) */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 60px;
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 30px;
+    box-sizing: border-box;
+    z-index: 100; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s;
+}
+
+.nav-logo {
+    color: var(--nav-yazi);
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+}

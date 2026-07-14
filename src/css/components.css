@@ -1,0 +1,236 @@
+/* ==========================================================================
+   BİLEŞENLER (CONTAINER, INPUTS, BUTTONS, LIST ITEMS)
+   ========================================================================== */
+
+/* Ana Kutu (Container) */
+.container {
+    width: 100%;             
+    max-width: 750px;        
+    background: var(--kutu-bg);
+    padding: 30px;
+    border-radius: 12px;    
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
+    z-index: 10; 
+    height: fit-content; 
+    box-sizing: border-box;
+    transition: background 0.3s, color 0.3s;
+}
+
+h1 {
+    color: var(--yazi-rengi);
+    text-align: center;
+    margin-top: 0;
+}
+
+/* Giriş Grubu */
+.input-group {
+    display: flex;
+    flex-wrap: wrap; /* Mobilde alt alta dizilmesi(responsive) için flex-wrap kullanıldı */
+    gap: 10px; 
+    margin-bottom: 20px;
+}
+
+#todoInput {
+    flex: 1; 
+    min-width: 200px;
+    padding: 10px 15px;
+    background-color: var(--girdi-bg);
+    color: var(--girdi-yazi);
+    border: 2px solid var(--border-renk);
+    border-radius: 6px;
+    outline: none; 
+    font-size: 16px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#todoInput:focus {
+    border-color: var(--primary-color); 
+}
+
+/* Tarih Girdisi */
+#todoDate {
+    padding: 10px 12px; /* Input ile aynı yüksekliğe sahip olması için hizalandı */
+    font-size: 16px;
+    background-color: var(--girdi-bg);
+    color: var(--girdi-yazi);
+    border: 2px solid var(--border-renk);
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#todoDate:focus {
+    border-color: var(--primary-color);
+}
+
+/* Tarayıcıların varsayılan takvim ikonunu özelleştirme */
+#todoDate::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    opacity: 0.7; 
+}
+
+#todoDate::-webkit-calendar-picker-indicator:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Öncelik Seçimi */
+#todoPriority {
+    padding: 10px 12px;
+    font-size: 16px;
+    background-color: var(--girdi-bg);
+    color: var(--girdi-yazi);
+    border: 2px solid var(--border-renk);
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#todoPriority:focus {
+    border-color: var(--primary-color);
+}
+
+/* --- Liste İçindeki Öncelik Etiketleri (Badges) --- */
+.priority-badge {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.priority-3 { background-color: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; } /* Yüksek - Kırmızı */
+.priority-2 { background-color: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid #f59e0b; } /* Orta - Turuncu/Sarı */
+.priority-1 { background-color: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; } /* Düşük - Yeşil */
+/* Butonlar */
+#themeButton {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+#themeButton:hover { background-color: rgba(255, 255, 255, 0.4); }
+
+#addButton {
+    background-color: var(--primary-color); 
+    color: white;
+    padding: 10px 20px;
+    border: none; border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer; 
+    transition: background 0.2s; 
+}
+#addButton:hover { background-color: var(--primary-hover); }
+
+#clearButton {
+    background-color: var(--danger-color); 
+    color: white;
+    width: 100%; padding: 12px;
+    border: none; border-radius: 6px;
+    font-weight: bold; cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+#clearButton:hover { background-color: var(--danger-hover); }
+
+/* Liste Öğeleri (To-Do Items) */
+#todoList { padding: 0; margin: 0; }
+
+li {
+    background-color: var(--liste-eleman-bg);
+    border: 1px solid var(--border-renk);
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+li span {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 16px;
+    color: var(--liste-yazi);
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+.task-content small {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.button-group { display: flex; gap: 10px; align-items: center; }
+
+/* Genel Silme Butonu */
+.button-group button:not(.check-btn) {
+    background-color: var(--danger-bg);
+    border: 1px solid var(--danger-border);
+    color: var(--danger-color);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.button-group button:not(.check-btn):hover { background-color: var(--danger-border); }
+
+/* Onay (Checkbox) Butonu */
+.check-btn {
+    all: unset;
+    width: 22px !important; height: 22px !important;
+    min-width: 22px !important; min-height: 22px !important;
+    border: 2px solid #cbd5e1 !important;
+    border-radius: 50% !important;
+    background-color: transparent !important;
+    cursor: pointer;
+    position: relative;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease;
+}
+.check-btn:hover {
+    border-color: var(--primary-color) !important;
+    background-color: rgba(76, 81, 191, 0.08) !important;
+}
+.check-btn.active {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+}
+.check-btn.active::after {
+    content: "" !important;
+    position: absolute;
+    left: 50% !important;
+    top: 50% !important;
+    width: 5px !important; height: 9px !important;
+    border: solid white !important;
+    border-width: 0 2px 2px 0 !important;
+    transform: translate(-50%, -60%) rotate(45deg) !important;
+    display: block !important;
+}

@@ -1,0 +1,48 @@
+/* ==========================================================================
+   TEMA RENK VE FONT DEĞİŞKENLERİ (TÜM SAYFA İÇİN)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    /* 🌟 FONT DEĞİŞKENİ */
+    --font-main: 'Roboto', sans-serif;
+
+    /* --- AYDINLIK MOD DEĞİŞKENLERİ --- */
+    --kutu-bg: rgba(255, 255, 255, 0.90); 
+    --yazi-rengi: #1a202c; 
+    --girdi-bg: #ffffff;
+    --girdi-yazi: #1a202c;
+    --liste-eleman-bg: #ffffff;
+    --liste-yazi: #2d3748;
+    --border-renk: #cbd5e1; 
+    
+    
+    --nav-bg: rgba(255, 255, 255, 0.4); 
+    --nav-yazi: #0f172a; 
+    
+    /* Arka plan resmi ve animasyonları için sayfa arka planı roottan çektik */
+    --sayfa-bg: url("../assets/images/sunny_bg.jpg") center/cover no-repeat fixed; 
+
+    /* --- ORTAK RENKLER (İki modda da aynı kalır) --- */
+    --primary-color: #4c51bf;
+    --primary-hover: hsl(242, 38%, 41%);
+    --danger-color: #e53e3e;
+    --danger-hover: hsl(0, 74%, 50%);
+    --danger-bg: hsl(0, 74%, 95%);
+    --danger-border: hsl(0, 74%, 85%);
+    --success-color: #48bb78;
+}
+
+body.dark {
+    /* --- KARANLIK MOD DEĞİŞKENLERİ --- */
+    --kutu-bg: rgba(26, 32, 44, 0.95);
+    --yazi-rengi: #f7fafc;
+    --girdi-bg: #2d3748;
+    --girdi-yazi: #ffffff;
+    --liste-eleman-bg: #2d3748;
+    --liste-yazi: #e2e8f0;
+    --border-renk: #4a5568;
+    --nav-bg: rgba(0, 0, 0, 0.6);
+    --nav-yazi: #ffffff;
+    --sayfa-bg: transparent; 
+}
