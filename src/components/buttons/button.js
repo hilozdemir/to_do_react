@@ -14,6 +14,26 @@ function Button(props) {
   </button>;
 }
 
+function AddButton(props) {
+  return <Button
+    id="addButton"
+    type="button"
+    label="Add"
+    onClick={props.onClick}
+    className={props.className}
+  />;
+}
+
+function ClearButton(props) {
+  return <Button
+    id="clearButton"
+    type="button"
+    label="Clear All"
+    onClick={props.onClick}
+    className={props.className}
+  />;
+}
+
 // We require the use of onClick and label, only enforced by react in dev mode
 Button.propTypes = {
   onClick: PropTypes.func,
@@ -23,5 +43,16 @@ Button.propTypes = {
   id: PropTypes.string,
 };
 
+AddButton.propTypes = {
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+};
+
+ClearButton.propTypes = {
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+};
+
 export default Button;
+export { AddButton, ClearButton };
 

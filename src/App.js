@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/header';
-import Button from './components/buttons/button';
+import { AddButton, ClearButton } from './components/buttons/button';
+import { TaskInput, DateInput, PrioritySelect } from './components/inputs/input';
 
 function TodoList() {
   return (
@@ -11,21 +12,16 @@ function TodoList() {
         <h1>Daily Tasks</h1>
 
         <div className="input-group">
-          <input type="text" id="todoInput" placeholder="Add a new task" />
-          <input type="date" id="todoDate" />
+          <TaskInput />
+          <DateInput />
+          <PrioritySelect />
 
-          <select id="todoPriority" defaultValue="1">
-            <option value="1">🟢 Low</option>
-            <option value="2">🟡 Medium</option>
-            <option value="3">🔴 High</option>
-          </select>
-
-          <Button id="addButton" type="button" label="Add" />
+          <AddButton />
         </div>
 
         <ul id="todoList"></ul>
 
-        <Button id="clearButton" type="button" label="Clear All" />
+        <ClearButton />
       </main>
     </>
   );
