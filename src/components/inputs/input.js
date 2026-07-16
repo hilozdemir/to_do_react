@@ -17,7 +17,6 @@ function Input(props) {
       placeholder={props.placeholder}
       type={props.type || 'text'}
       value={props.value}
-      defaultValue={props.defaultValue}
     />
   );
 }
@@ -28,7 +27,6 @@ function Select(props) {
       className={props.className}
       id={props.id}
       onChange={props.onChange}
-      defaultValue={props.defaultValue}
       value={props.value}
     >
       {props.children}
@@ -37,16 +35,16 @@ function Select(props) {
 }
 
 function TaskInput(props) {
-  return <Input id="todoInput" type="text" placeholder="Add a new task" onChange={props.onChange} className={props.className} />;
+  return <Input id="todoInput" type="text" placeholder="Add a new task" onChange={props.onChange} value={props.value} className={props.className} />;
 }
 
 function DateInput(props) {
-  return <Input id="todoDate" type="date" onChange={props.onChange} className={props.className} />;
+  return <Input id="todoDate" type="date" onChange={props.onChange} value={props.value} className={props.className} />;
 }
 
 function PrioritySelect(props) {
   return (
-    <Select id="todoPriority" defaultValue="1" onChange={props.onChange} className={props.className}>
+    <Select id="todoPriority" onChange={props.onChange} value={props.value} className={props.className}>
       <option value="1">🟢 Low</option>
       <option value="2">🟡 Medium</option>
       <option value="3">🔴 High</option>
@@ -61,14 +59,12 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 Select.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   onChange: PropTypes.func,
-  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   children: PropTypes.node,
 };
@@ -76,16 +72,19 @@ Select.propTypes = {
 TaskInput.propTypes = {
   onChange: PropTypes.func,
   className: PropTypes.string,
+  value: PropTypes.string,
 };
 
 DateInput.propTypes = {
   onChange: PropTypes.func,
   className: PropTypes.string,
+  value: PropTypes.string,
 };
 
 PrioritySelect.propTypes = {
   onChange: PropTypes.func,
   className: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default Input;

@@ -9,7 +9,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Button(props) {
-  return <button className={props.className} id={props.id} onClick={props.onClick} type={props.type || 'button'}>
+  return <button 
+    className={props.className} 
+    id={props.id} onClick={props.onClick} 
+    type={props.type || 'button'}>
     {props.label}
   </button>;
 }

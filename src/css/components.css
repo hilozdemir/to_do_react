@@ -79,7 +79,10 @@ h1 {
 
 /* Öncelik Seçimi */
 #todoPriority {
-    padding: 10px 12px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 10px 36px 10px 12px;
     font-size: 16px;
     background-color: var(--girdi-bg);
     color: var(--girdi-yazi);
@@ -89,6 +92,10 @@ h1 {
     cursor: pointer;
     font-family: inherit;
     transition: background-color 0.3s, border-color 0.3s;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7"><path fill="%2398a2b3" d="M6 7L0 1h12z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center;
+    background-size: 12px 7px;
 }
 
 #todoPriority:focus {
@@ -97,18 +104,20 @@ h1 {
 
 /* --- Liste İçindeki Öncelik Etiketleri (Badges) --- */
 .priority-badge {
-    font-size: 12px;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 10px 16px;
+    border-radius: 6px;
     text-transform: uppercase;
     white-space: nowrap;
     flex-shrink: 0;
+    min-width: 150px;
+    text-align: left;
 }
 
-.priority-3 { background-color: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; } /* Yüksek - Kırmızı */
-.priority-2 { background-color: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid #f59e0b; } /* Orta - Turuncu/Sarı */
-.priority-1 { background-color: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; } /* Düşük - Yeşil */
+.priority-3 { background-color: rgba(239, 68, 68, 0.13); color: #ef4444; border: 2px solid #ef4444; } /* Yüksek - Kırmızı */
+.priority-2 { background-color: rgba(245, 158, 11, 0.13); color: #f59e0b; border: 2px solid #f59e0b; } /* Orta - Turuncu/Sarı */
+.priority-1 { background-color: rgba(16, 185, 129, 0.13); color: #10b981; border: 2px solid #10b981; } /* Düşük - Yeşil */
 /* Butonlar */
 #themeButton {
     background-color: rgba(255, 255, 255, 0.2);
@@ -147,27 +156,31 @@ h1 {
 /* Liste Öğeleri (To-Do Items) */
 #todoList { padding: 0; margin: 0; }
 
-li {
+.todo-item {
     background-color: var(--liste-eleman-bg);
-    border: 1px solid var(--border-renk);
-    padding: 12px 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
+    border: 2px solid #d5dfef;
+    padding: 18px 22px;
+    margin-bottom: 18px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between; 
-    gap: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    transition: background-color 0.3s, border-color 0.3s;
+    gap: 18px;
+    box-shadow: 0 4px 10px rgba(31, 41, 55, 0.04);
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
 }
 
-li span {
+.todo-item:hover {
+    transform: translateY(-1px);
+}
+
+.todo-item .todo-text {
     flex: 1 1 auto;
     min-width: 0;
-    font-size: 16px;
-    color: var(--liste-yazi);
-    word-break: normal;
-    overflow-wrap: normal;
+    font-size: 20px;
+    font-weight: 700;
+    color: #344054;
+    word-break: break-word;
 }
 
 .task-content {
@@ -181,9 +194,16 @@ li span {
 .task-content small {
     white-space: nowrap;
     flex-shrink: 0;
+    font-size: 16px;
+    color: #98a2b3;
+    font-weight: 600;
 }
 
 .button-group { display: flex; gap: 10px; align-items: center; }
+
+.completed .todo-text {
+    color: #98a2b3;
+}
 
 /* Genel Silme Butonu */
 .button-group button:not(.check-btn) {
@@ -199,12 +219,31 @@ li span {
 }
 .button-group button:not(.check-btn):hover { background-color: var(--danger-border); }
 
+.delete-btn {
+    width: 80px;
+    height: 56px;
+    border-radius: 10px;
+    background-color: #fff0f0;
+    border: 2px solid #f7b7b7 !important;
+    color: #ef4444 !important;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #ffe2e2;
+}
+
 /* Onay (Checkbox) Butonu */
 .check-btn {
     all: unset;
-    width: 22px !important; height: 22px !important;
-    min-width: 22px !important; min-height: 22px !important;
-    border: 2px solid #cbd5e1 !important;
+    width: 36px !important; height: 36px !important;
+    min-width: 36px !important; min-height: 36px !important;
+    border: 4px solid #cbd5e1 !important;
     border-radius: 50% !important;
     background-color: transparent !important;
     cursor: pointer;
@@ -228,7 +267,7 @@ li span {
     position: absolute;
     left: 50% !important;
     top: 50% !important;
-    width: 5px !important; height: 9px !important;
+    width: 7px !important; height: 12px !important;
     border: solid white !important;
     border-width: 0 2px 2px 0 !important;
     transform: translate(-50%, -60%) rotate(45deg) !important;
