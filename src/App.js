@@ -41,7 +41,7 @@ function TodoList() {
     setTodoPriority('1');
   };
 
-  const handleClearTodos = () => {
+  const handleClearTodos = () => { //tüm görevleri silme işlemi
     if (todos.length === 0) {
       return;
     }
@@ -55,7 +55,7 @@ function TodoList() {
     setTodos([]);
   };
 
-  const handleDeleteTodo = (todoId) => {
+  const handleDeleteTodo = (todoId) => {  //tek bir görevi silme işlemi
     const shouldDelete = window.confirm('Bu gorevi silmek istediginize emin misiniz?');
 
     if (!shouldDelete) {
