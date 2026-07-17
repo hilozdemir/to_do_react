@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from './components/header';
-import { AddButton } from './components/buttons/button';
+import { AddButton, ClearButton } from './components/buttons/button';
 import { TaskInput, DateInput, PrioritySelect } from './components/inputs/input';
 
 function TodoList() {
   const [todoText, setTodoText] = useState('');
   const [todoDate, setTodoDate] = useState('');
   const [todoPriority, setTodoPriority] = useState('1'); //1 vererek kullanıcı seçim yapmadığından otomatik Low seçilir.
-  const [todos, setTodos] = useState(() => {
-    try {
-      const raw = localStorage.getItem('todos');
-      return raw ? JSON.parse(raw) : [];
-    } catch (e) {
-      return [];
-    }
-  });
+  const [todos, setTodos] = useState([]);
   const priorityLabels = {
     '1': 'Low',
     '2': 'Medium',
@@ -48,14 +41,29 @@ function TodoList() {
     setTodoPriority('1');
   };
 
-  // Persist todos to localStorage whenever they change
-  useEffect(() => {
-    try {
-      localStorage.setItem('todos', JSON.stringify(todos));
-    } catch (e) {
-      // ignore write errors (e.g., storage full)
+  const handleClearTodos = () => {
+    if (todos.length === 0) {
+      return;
     }
-  }, [todos]);
+
+    const shouldClear = window.confirm('Tum gorevleri silmek istediginize emin misiniz?');
+
+    if (!shouldClear) {
+      return;
+    }
+
+    setTodos([]);
+  };
+
+  const handleDeleteTodo = (todoId) => {
+    const shouldDelete = window.confirm('Bu gorevi silmek istediginize emin misiniz?');
+
+    if (!shouldDelete) {
+      return;
+    }
+
+    setTodos((currentTodos) => currentTodos.filter((todo) => todo.id !== todoId));
+  };
 
   return (
     <>
@@ -84,9 +92,23 @@ function TodoList() {
               <span className={`priority-badge ${priorityClassNames[todo.priority]}`}>
                 {priorityLabels[todo.priority]}
               </span>
+
+              <div className="button-group">
+                <button
+                  type="button"
+                  className="delete-btn todo-delete-button"
+                  onClick={() => handleDeleteTodo(todo.id)}
+                  aria-label="Delete todo"
+                  title="Delete todo"
+                >
+                  <span aria-hidden="true">&#128465;</span>
+                </button>
+              </div>
             </li>
           ))}
         </ul>
+
+        <ClearButton onClick={handleClearTodos} />
 
       </main>
     </>

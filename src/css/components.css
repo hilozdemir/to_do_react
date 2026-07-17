@@ -199,7 +199,12 @@ h1 {
     font-weight: 600;
 }
 
-.button-group { display: flex; gap: 10px; align-items: center; }
+.button-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-shrink: 0;
+}
 
 .completed .todo-text {
     color: #98a2b3;
@@ -219,23 +224,32 @@ h1 {
 }
 .button-group button:not(.check-btn):hover { background-color: var(--danger-border); }
 
-.delete-btn {
-    width: 80px;
-    height: 56px;
+.delete-btn,
+.todo-delete-button {
+    width: 68px;
+    height: 40px;
     border-radius: 10px;
     background-color: #fff0f0;
     border: 2px solid #f7b7b7 !important;
     color: #ef4444 !important;
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: center;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.delete-btn:hover {
+.delete-btn:hover,
+.todo-delete-button:hover {
     background-color: #ffe2e2;
+}
+
+.priority-badge {
+    align-self: center;
 }
 
 /* Onay (Checkbox) Butonu */
